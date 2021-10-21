@@ -1,9 +1,12 @@
-const express = require('express');
-require('dotenv').config({path: './config/.env'});
-require('./config/db')
-const personRoutes = require("./routes/person.routes");
-const app = express() ;
+const express=require('express')
+const connectdb=require('./connectdb')
+const app=express()
+app.use(express.json())
+connectdb()
 
-app.listen(process.env.PORT , () =>{
-    console.log(`Listening on port ${process.env.PORT}` );
-})
+app.use("/api",require('./routes.js'))
+
+
+const PORT=process.env.PORT ||5000;
+app.listen(PORT,()=>console.log(`Server started on port ${PORT}`))
+
