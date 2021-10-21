@@ -1,0 +1,3 @@
+./mongoosetest
+./node_modules
+./config/.env
